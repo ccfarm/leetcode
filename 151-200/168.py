@@ -4,8 +4,12 @@ class Solution:
         :type n: int
         :rtype: str
         """
-        l = [26]
-        sum = 26
-        while sum < n:
-            l.append(l[-1] * 26)
-            sum += l[-1]
+        ans = ""
+        while n > 0:
+            tmp = n % 26
+            n = n // 26
+            if tmp == 0:
+                ans  = 'Z' + ans
+            else:
+                ans = chr(ord('A') + tmp - 1) + ans
+        return ans
