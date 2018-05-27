@@ -9,9 +9,11 @@ class Solution:
         for x in nums:
             s = str(x)
             a.append(s)
-            ml = max(ml, len(s))
-        for i in range(a):
-            a[i] = a[i] + '/' * (ml - len(a[i]))
-        a.sort(reverse=True)
-        ans = ''.join(a).replace('/', '')
-        return ans
+        from functools import cmp_to_key
+        a.sort(key=cmp_to_key(lambda x,y:int(y+x)-int(x+y)))
+        print(a)
+        ans = ''.join(a).lstrip('0')
+
+
+
+        return ans or '0'
